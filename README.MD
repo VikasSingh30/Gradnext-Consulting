@@ -4,7 +4,7 @@ A modern landing page for GradNext, a consulting career preparation platform tha
 
 ## 🚀 Live Demo
 
-[View Deployed Project](https://your-deployment-link-here.com)  
+[View Deployed Project](https://gradnext-consulting.vercel.app/)  
 
 ## ✨ Features
 
