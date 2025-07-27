@@ -14,27 +14,43 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">GradNext</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#features">Programs</a></li>
+                <li><a href="#programs">Programs</a></li>
                 <li><a href="#testimonials">Success Stories</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div id="mobile-menu" class="mobile-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="#programs" class="btn btn-primary mobile-btn">
+                            <i class="fas fa-rocket"></i> Start Your Journey
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
+        <div class="container">
             <div class="hero-content">
-                <h1>Making Your Consulting Dream Possible</h1>
-                <p>Elevate your consulting preparation. Learn from McKinsey, BCG and Bain consultants to set you on the
-                    path to success.</p>
+                <h1>
+                    Making your <span class="typing-animation">consulting dream</span><br>
+                    <span class="highlight">possible.</span>
+                </h1>
+                <p class="subtitle">
+                    Elevate your consulting preparation. Learn from McKinsey, BCG and Bain consultants to set you on the
+                    path to success.
+                </p>
 
                 <div class="company-logos">
                     <div class="company-logo">McKinsey</div>
@@ -76,125 +92,197 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- Programs Section -->
+    <section id="programs" class="section programs">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Comprehensive Consulting Preparation</h2>
-                <p class="section-subtitle">Our proven methodology combines personalized coaching, peer learning, and
-                    practical case experience to maximize your success rate.</p>
+            <div class="section-header">
+                <h2>Our Programs</h2>
+                <p>Choose the perfect program to accelerate your consulting career</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
+            <div class="programs-grid">
+                <!-- 1:1 Coaching Program -->
+                <div class="program-card">
+                    <div class="card-header">
+                        <div class="program-icon bg-blue">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>1:1 Coaching Program</h3>
+                        <p>Get ready with tailored plan and targeted preparation guided by consultants from McKinsey, BCG and Bain</p>
                     </div>
-                    <h3>1:1 Coaching Programs</h3>
-                    <p>Get personalized guidance from experienced consultants at McKinsey, BCG, and Bain. Tailored
-                        preparation plans designed specifically for your needs and target firms.</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Personalized preparation plan</li>
+                        <li><i class="fas fa-check"></i> Expert MBB consultant mentorship</li>
+                        <li><i class="fas fa-check"></i> Mock interview sessions</li>
+                    </ul>
+                    <div class="program-actions">
+                        <button class="btn btn-primary">
+                            Book Free Discovery Call
+                        </button>
+                        <button class="btn btn-outline">
+                            Book Free Roadmap Call
+                        </button>
+                    </div>
                 </div>
 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                <!-- Consulting Cohort 101 -->
+                <div class="program-card">
+                    <div class="card-header">
+                        <div class="program-icon bg-purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Consulting Cohort 101</h3>
+                        <p>Join an exclusive group of driven individuals to sharpen your consulting fundamentals</p>
                     </div>
-                    <h3>Consulting Cohort 101</h3>
-                    <p>Join an exclusive group of driven individuals to sharpen your consulting fundamentals. Learn with
-                        peers from around the world in live interactive sessions.</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> Live Interactive Sessions</li>
+                        <li><i class="fas fa-check"></i> 1:1 Mentorship with MBB Consultant</li>
+                        <li><i class="fas fa-check"></i> Network with Cohort Members</li>
+                    </ul>
+                    <div class="program-actions">
+                        <button class="btn btn-primary">
+                            Enroll for Sep Cohort
+                        </button>
+                    </div>
                 </div>
 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                <!-- CaseBuddy -->
+                <div class="program-card">
+                    <div class="card-header">
+                        <div class="program-icon bg-green">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>CaseBuddy</h3>
+                        <p>Self practice cases at your own pace with AI-powered feedback and analysis</p>
                     </div>
-                    <h3>Case Interview Mastery</h3>
-                    <p>Practice with real case studies from top consulting firms. Develop structured problem-solving
-                        skills and receive detailed feedback on your performance.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i> AI-powered case practice</li>
+                        <li><i class="fas fa-check"></i> Instant feedback & analysis</li>
+                        <li><i class="fas fa-check"></i> Progress tracking</li>
+                    </ul>
+                    <div class="program-actions">
+                        <button class="btn btn-primary">
+                            Try CaseBuddy
+                        </button>
                     </div>
-                    <h3>Global Network</h3>
-                    <p>Connect with aspiring consultants from 13+ countries. Build lasting relationships and expand your
-                        professional network in the consulting industry.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Flexible Learning</h3>
-                    <p>Self-paced practice cases and on-demand resources that fit your schedule. Access materials
-                        anytime, anywhere to maintain consistent preparation momentum.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Proven Results</h3>
-                    <p>67% of our program graduates receive offers from top consulting firms. Join hundreds of
-                        successful candidates who trusted gradnext for their preparation.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="section testimonials">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Success Stories</h2>
-                <p class="section-subtitle">Hear from our graduates who landed their dream consulting roles</p>
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Join the club who have trusted us and started their journey</p>
             </div>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "I had a great experience working with gradnext to prepare for my case interviews. The support
-                        and guidance I received were instrumental in improving both my confidence and performance.
-                        Kashish and Nikhil were exceptional throughout the process, bringing clarity and structure to
-                        complex problems."
-                    </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">D</div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">D</div>
-                        <div class="author-info">
-                            <h4>Dinesh</h4>
-                            <p>McKinsey & Company</p>
-                        </div>
+                        <h3>Dinesh</h3>
+                        <p>Program Graduate</p>
                     </div>
                 </div>
+                <div class="testimonial-content">
+                    "I had a great experience working with gradnext to prepare for my case interviews. The support
+                    and guidance I received were instrumental in improving both my confidence and my performance
+                    during the actual interviews. A special thanks to Kashish and Nikhil, who were exceptional
+                    throughout the process. Their mock sessions were well-structured, realistic, and tailored to my
+                    needs. I truly appreciated the attention to detail, the patience, and the personalized feedback
+                    that helped me progress with each session. I would highly recommend their services to anyone
+                    serious about case interview preparation."
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "The structured approach and personalized feedback helped me crack BCG interviews. The mock
-                        sessions were incredibly realistic and prepared me for every possible scenario. I couldn't have
-                        done it without gradnext's comprehensive program."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div class="author-info">
-                            <h4>Sarah Chen</h4>
-                            <p>Boston Consulting Group</p>
+    <!-- University Partnership Section -->
+    <section class="section university-partnership">
+        <div class="container">
+            <h2>Exploring University Partnership?</h2>
+            <p>
+                Discover gradnext's university solutions and help your students achieve their consulting goals.
+                gradnext is trusted by leading institutions.
+            </p>
+            <button class="btn btn-primary btn-lg">
+                Learn About Partnerships
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Get in touch with us to begin your consulting preparation</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Get Started Today</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Program Interest</label>
+                            <select id="program" class="form-control">
+                                <option value="">Select a program</option>
+                                <option value="1:1-coaching">1:1 Coaching Program</option>
+                                <option value="cohort-101">Consulting Cohort 101</option>
+                                <option value="casebuddy">CaseBuddy</option>
+                                <option value="university">University Partnership</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" class="form-control" placeholder="Tell us about your consulting goals..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-message" class="form-message"></div>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "The cohort program was amazing! Learning alongside peers from different backgrounds gave me new
-                        perspectives on case solving. The mentorship from actual consultants made all the difference in
-                        my Bain interview success."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">R</div>
-                        <div class="author-info">
-                            <h4>Raj Patel</h4>
-                            <p>Bain & Company</p>
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@gradnext.co</span>
                         </div>
+                        <div class="contact-method">
+                            <i class="fas fa-globe"></i>
+                            <span>www.gradnext.co</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-users"></i>
+                            <span>1K+ Community Members</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <h4>Quick Actions</h4>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-calendar"></i>
+                            Book a 45-min Session
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Schedule Free Discovery Call
+                        </button>
                     </div>
                 </div>
             </div>
@@ -202,23 +290,21 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="section cta">
         <div class="container">
-            <div class="cta-content fade-in">
-                <h2>Ready to Start Your Consulting Journey?</h2>
-                <p>Join 1000+ aspiring consultants who have trusted gradnext to achieve their consulting dreams.</p>
+            <h2>Ready to Start Your Consulting Journey?</h2>
+            <p>Join 1000+ aspiring consultants who have trusted gradnext to achieve their consulting dreams.</p>
 
-                <div class="cta-form">
-                    <input type="email" id="email" placeholder="Enter your email address" required>
-                    <button type="button" onclick="submitForm()">
-                        <i class="fas fa-paper-plane"></i>
-                        Get Started
-                    </button>
-                </div>
-                <div id="successMessage" class="success-message">
-                    <i class="fas fa-check-circle"></i>
-                    Thank you! We'll be in touch soon with program details.
-                </div>
+            <div class="cta-form">
+                <input type="email" id="cta-email" placeholder="Enter your email address" required>
+                <button type="button" class="btn btn-primary" id="cta-submit">
+                    <i class="fas fa-paper-plane"></i>
+                    Get Started
+                </button>
+            </div>
+            <div id="successMessage" class="success-message">
+                <i class="fas fa-check-circle"></i>
+                Thank you! We'll be in touch soon with program details.
             </div>
         </div>
     </section>
@@ -226,8 +312,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-grid">
+                <div class="footer-column">
                     <h3>gradnext</h3>
                     <p>Making your consulting dream possible through personalized preparation and expert guidance.</p>
                     <div class="social-links">
@@ -238,9 +324,9 @@
                     </div>
                 </div>
 
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Programs</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#">1:1 Coaching</a></li>
                         <li><a href="#">Consulting Cohort 101</a></li>
                         <li><a href="#">Case Interview Prep</a></li>
@@ -248,9 +334,9 @@
                     </ul>
                 </div>
 
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Resources</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#">Case Studies</a></li>
                         <li><a href="#">Interview Tips</a></li>
                         <li><a href="#">Success Stories</a></li>
@@ -258,9 +344,9 @@
                     </ul>
                 </div>
 
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Contact</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="mailto:hello@gradnext.co">hello@gradnext.co</a></li>
                         <li><a href="#">Support Center</a></li>
                         <li><a href="#">Schedule Consultation</a></li>
@@ -270,7 +356,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 gradnext. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2024 gradnext. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>

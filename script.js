@@ -1,20 +1,32 @@
 // Mobile menu toggle
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
-const navLinks = document.querySelector('.nav-links');
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+mobileMenuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    mobileMenuToggle.innerHTML = mobileMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    });
 });
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
             });
         }
     });
@@ -42,7 +54,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     } else {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
@@ -50,19 +62,22 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Form submission simulation with backend storage
+// Form handling
+const contactForm = document.getElementById('contactForm');
+const ctaForm = document.querySelector('.cta-form');
+const successMessage = document.getElementById('successMessage');
 let submissions = [];
 
-function submitForm() {
-    const email = document.getElementById('email').value;
-    const successMessage = document.getElementById('successMessage');
+// CTA Form submission
+ctaForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('cta-email').value;
     
     if (!email || !isValidEmail(email)) {
         alert('Please enter a valid email address');
         return;
     }
 
-    // Simulate form submission to backend
     const submission = {
         email: email,
         timestamp: new Date().toISOString(),
@@ -70,21 +85,41 @@ function submitForm() {
         id: Date.now()
     };
 
-    // Store in memory (simulating backend storage)
     submissions.push(submission);
-    
-    // Show success message
     successMessage.style.display = 'block';
-    document.getElementById('email').value = '';
+    document.getElementById('cta-email').value = '';
     
-    // Hide success message after 5 seconds
     setTimeout(() => {
         successMessage.style.display = 'none';
     }, 5000);
 
-    // Log submission for demonstration
-    console.log('Form submitted:', submission);
-    console.log('All submissions:', submissions);
+    trackEvent('cta_form_submission', { email: email });
+});
+
+// Contact Form submission
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            program: document.getElementById('program').value,
+            message: document.getElementById('message').value
+        };
+
+        const submission = handleContactForm(formData);
+        const formMessage = document.getElementById('form-message');
+        
+        formMessage.textContent = 'Thank you for your message! We will contact you soon.';
+        formMessage.classList.add('success');
+        formMessage.style.display = 'block';
+        
+        contactForm.reset();
+        
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    });
 }
 
 function isValidEmail(email) {
@@ -92,14 +127,6 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Allow form submission with Enter key
-document.getElementById('email').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        submitForm();
-    }
-});
-
-// Contact form handler (for demonstration)
 function handleContactForm(formData) {
     const contactSubmission = {
         ...formData,
@@ -109,21 +136,23 @@ function handleContactForm(formData) {
     };
     
     submissions.push(contactSubmission);
-    console.log('Contact form submitted:', contactSubmission);
+    trackEvent('contact_form_submission', contactSubmission);
     return contactSubmission;
 }
 
-// Analytics tracking simulation
+// Analytics tracking
 function trackEvent(eventName, properties = {}) {
     console.log('Event tracked:', eventName, properties);
+    // In a real app, this would send data to analytics service
 }
 
 // Track button clicks
 document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function() {
         trackEvent('button_click', {
             button_text: this.textContent.trim(),
-            button_class: this.className,
+            button_type: this.classList.contains('btn-primary') ? 'primary' : 
+                        this.classList.contains('btn-secondary') ? 'secondary' : 'default',
             page_section: this.closest('section')?.id || 'unknown'
         });
     });
@@ -135,7 +164,7 @@ window.addEventListener('scroll', () => {
     const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
     if (scrollDepth > maxScrollDepth) {
         maxScrollDepth = scrollDepth;
-        if (maxScrollDepth % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+        if (maxScrollDepth % 25 === 0) {
             trackEvent('scroll_depth', { depth: maxScrollDepth });
         }
     }
@@ -145,7 +174,6 @@ window.addEventListener('scroll', () => {
 const API = {
     submissions: submissions,
     
-    // GET all submissions
     getSubmissions() {
         return {
             success: true,
@@ -154,7 +182,6 @@ const API = {
         };
     },
     
-    // POST new submission
     createSubmission(submissionData) {
         const newSubmission = {
             ...submissionData,
@@ -169,7 +196,6 @@ const API = {
         };
     },
     
-    // GET submission by ID
     getSubmission(id) {
         const submission = this.submissions.find(s => s.id === parseInt(id));
         return submission ? 
@@ -177,7 +203,6 @@ const API = {
             { success: false, message: 'Submission not found' };
     },
     
-    // Simple analytics
     getAnalytics() {
         const now = new Date();
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -200,13 +225,7 @@ const API = {
     }
 };
 
-// Expose API for testing (in real app, this would be server endpoints)
 window.gradnextAPI = API;
-
-// Demo: Log API capabilities
-console.log('GradNext Landing Page Loaded');
-console.log('Available API methods:', Object.keys(API));
-console.log('Try: gradnextAPI.getAnalytics()');
 
 // Performance monitoring
 window.addEventListener('load', () => {
@@ -219,3 +238,6 @@ window.addEventListener('load', () => {
         });
     }, 0);
 });
+
+console.log('GradNext Landing Page Loaded');
+console.log('Available API methods:', Object.keys(API));
